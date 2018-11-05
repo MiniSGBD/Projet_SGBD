@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class DBManager {
 
+	//j'ai ajoute ca
 	//il en existe une seule et unique instance DBManager 
 	private static final DBManager INSTANCE = new DBManager();
 
