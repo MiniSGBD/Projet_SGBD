@@ -71,7 +71,7 @@ public class DBManager {
 	 * 
 	 */
 	public void Finish() {
-
+		new BufferManager().flushAll();
 	}
 
 	/**method ProcessCommand

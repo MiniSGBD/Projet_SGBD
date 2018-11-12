@@ -54,15 +54,28 @@ public class BufferManager {
 
 	}
 
+	
+	/**
+	 * freePage, cad decremente Pin_Count, et setDirty
+	 * @param iPageId
+	 * @param iIsDirty
+	 */
 	public void freePage(PageId iPageId, boolean iIsDirty) {
 		for (int i = 0; i < Constantes.FRAMECOUNT; i++) {
 			if (BufferPool[i].getPageId() == iPageId){
 				BufferPool[i].decrePinCount();
-				if (iIsDirty) BufferPool[i].setDirty(true);
+				BufferPool[i].setDirty(iIsDirty);
 			}
 		}
 	}
 
+	/**
+	 * quand on execucu cette methode,
+	 * si dirty = 1; buffer et pin_count sont tous initialiser a 0
+	 * 
+	 * ps: risque d'etre fausse;
+	 * rmq: a utiliser dans la m¨¦thode Finish du DBManager
+	 */
 	public void flushAll() {
 		for (int i = 0; i < Constantes.FRAMECOUNT; i++) {
 			if (BufferPool[i].getDirty()==true){
