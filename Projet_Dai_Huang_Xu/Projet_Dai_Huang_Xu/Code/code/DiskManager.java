@@ -60,14 +60,11 @@ public class DiskManager {
 
 		return oPageId;
 	}
-<<<<<<< HEAD
 
-	public void readPage(int iPageId, String oBuffer) throws IOException {
 
-=======
+
 	
 	public byte[] readPage(int iPageId, byte[] oBuffer) throws IOException{
->>>>>>> a64f13d23eae8d6cca9842199543ee7510f61048
 		String current = new java.io.File( "." ).getCanonicalPath();
 		String path = current+"\134DB\134"+"Data_0.rf";
 
@@ -86,14 +83,11 @@ public class DiskManager {
 		}		
 		catch (Exception e) {
 			System.out.println(e.toString());
-<<<<<<< HEAD
 		}
 
-=======
-			}
+			
 		return oBuffer;
 		
->>>>>>> a64f13d23eae8d6cca9842199543ee7510f61048
 	}
 
 	public void writePage(int iPageId, String iBuffer) throws IOException{
