@@ -48,7 +48,7 @@ public class DiskManager {
 
 	}
 	
-	public void readPage(int iPageId, String oBuffer) throws IOException{
+	public byte[] readPage(int iPageId, byte[] oBuffer) throws IOException{
 		String current = new java.io.File( "." ).getCanonicalPath();
 		String path = current+"\134DB\134"+"Data_0.rf";
 		try{
@@ -58,13 +58,14 @@ public class DiskManager {
 			String ligne;
 			while ((ligne=buff.readLine())!=null){
 				System.out.println(ligne);
-				oBuffer+=ligne;
+				oBuffer=ligne.getBytes();
 			}
 			buff.close(); 
 			}		
 			catch (Exception e){
 			System.out.println(e.toString());
 			}
+		return oBuffer;
 		
 	}
 	

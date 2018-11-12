@@ -9,6 +9,10 @@ public class RelDef {
 	private String nomRelation;
 	private int nombreColonnes;
 	private List<String> typeColonnes = new ArrayList<String>();
+	private int recordSize;
+	private int slotCount;
+	private int fileIdx;
+	
 
 	/**Constructor
 	 * 
@@ -65,6 +69,29 @@ public class RelDef {
 	 */
 	public List<String> getTypeCol() {
 		return typeColonnes; 
+	}
+	public void setSlotCount(int slotCount){
+		this.slotCount = slotCount;
+	}
+	
+	public int getSlotCount(){
+		return this.slotCount;
+	}
+	
+	public void setRecordSize(int recordSize){
+		this.recordSize = recordSize;
+	}
+	
+	public int getRecordSize(){
+		return this.recordSize;
+	}
+	
+	public void setFileIdx(int fileIdx){
+		this.fileIdx = fileIdx;
+	}
+	
+	public int getfileIdx(){
+		return this.fileIdx;
 	}
 
 }
