@@ -55,6 +55,9 @@ public class DiskManager {
 		PageId oPageId = new PageId();
 		
 		oPageId.setFileIdx(iFileIdx);
+		//Yiwei/oPageId = ((file.length()) / (Constantes.PAGESIZE));
+		//chaofu//oPageId.setFileIdx(iFileIdx);
+
 		oPageId = ((file.length()) / (Constantes.PAGESIZE));
 		oPageId.setPageIdx(oPageId);
 
