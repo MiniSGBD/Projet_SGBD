@@ -42,7 +42,7 @@ public class DBManager {
 			e.printStackTrace();
 		}
 		dm.writePage(0, "hello world ");
-		dm.readPage(0, "");
+		dm.readPage(0, null);
 
 		do {
 
@@ -71,7 +71,7 @@ public class DBManager {
 	 * 
 	 */
 	public void Finish() {
-
+		new BufferManager().flushAll();
 	}
 
 	/**method ProcessCommand
