@@ -2,22 +2,22 @@ package code;
 
 public class PageId {
 
-	private int FileIdx=0;
-	private int PageIdx=0;
+	private PageId FileIdx;
+	private PageId PageIdx;
 
-	public int getFileIdx() {
+	public PageId getFileIdx() {
 		return FileIdx;
 	}
 
-	public void setFileIdx(int fileIdx) {
-		FileIdx = fileIdx;
+	public void setFileIdx(PageId iFileIdx) {
+		FileIdx = iFileIdx;
 	}
 
-	public int getPageIdx() {
+	public PageId getPageIdx() {
 		return PageIdx;
 	}
 
-	public void setPageIdx(int pageIdx) {
+	public void setPageIdx(PageId pageIdx) {
 		PageIdx = pageIdx;
 	}
 
