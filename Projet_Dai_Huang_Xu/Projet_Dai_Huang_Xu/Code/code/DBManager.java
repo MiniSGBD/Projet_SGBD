@@ -1,5 +1,6 @@
 package code;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,14 +25,24 @@ public class DBManager {
 	 * sinon, la commande est simplement passee au DBManager, 
 	 * via ProcessCommand (et la boucle continue)
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		System.out.println("hello");
 
 		//creation de l'instance DBManager
 		DBManager dbmanager = new DBManager();
 		String input = null;
+		DiskManager dm = DiskManager.getINSTANCE();
+		try {
+			dm.createFile(0);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dm.writePage(0, "hello world ");
+		dm.readPage(0, "");
 
 		do {
 
@@ -46,6 +57,7 @@ public class DBManager {
 			else dbmanager.ProcessCommand(input);
 
 		}while(input != "exit");
+		
 	}
 
 	/**method Init

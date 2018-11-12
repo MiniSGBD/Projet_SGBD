@@ -1,7 +1,14 @@
 package code;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class DiskManager {
 
@@ -16,15 +23,19 @@ public class DiskManager {
 
 		String fileName = "Data_"+iFileIdx+".rf";
 		String current = new java.io.File( "." ).getCanonicalPath();
-		String path = current+"\134"+fileName;
+		String path = current+"\134DB\134"+fileName;
 		System.out.println(path);
 
 		try {
 			File file = new File(path);
-			if(file.createNewFile())
-				System.out.println("File creation successfull");
-			else
-				System.out.println("Error while creating File, file already exists in specified path");
+			if(file.exists())
+				System.out.println("already exist");
+			else{
+				if(file.createNewFile())
+					System.out.println("File creation successfull");
+				else
+					System.out.println("Error while creating File, file already exists in specified path");
+			}
 		}
 		catch(IOException io) {
 			io.printStackTrace();
@@ -32,8 +43,40 @@ public class DiskManager {
 
 	}
 
-	public void  AddPage(int iFileIdx, int oPageId) {
+	public void  addPage(int iFileIdx, int oPageId) {
+		
 
+	}
+	
+	public void readPage(int iPageId, String oBuffer) throws IOException{
+		String current = new java.io.File( "." ).getCanonicalPath();
+		String path = current+"\134DB\134"+"Data_0.rf";
+		try{
+			InputStream flux=new FileInputStream(path); 
+			InputStreamReader lecture=new InputStreamReader(flux);
+			BufferedReader buff=new BufferedReader(lecture);
+			String ligne;
+			while ((ligne=buff.readLine())!=null){
+				System.out.println(ligne);
+				oBuffer+=ligne;
+			}
+			buff.close(); 
+			}		
+			catch (Exception e){
+			System.out.println(e.toString());
+			}
+		
+	}
+	
+	public void writePage(int iPageId, String iBuffer) throws IOException{
+		String current = new java.io.File( "." ).getCanonicalPath();
+		String path = current+"\134DB\134"+"Data_0.rf";
+		DataOutputStream bw = new DataOutputStream(
+	            new BufferedOutputStream(
+	            new FileOutputStream(path,true)));
+
+	            bw.write(iBuffer.getBytes());
+	            bw.close();
 	}
 	
 
@@ -45,7 +88,4 @@ public class DiskManager {
 		iNSTANCE = INSTANCE;
 	}
 
-	public void readPage(int iPageId, int oBuffer) {
-
-	}
 }
