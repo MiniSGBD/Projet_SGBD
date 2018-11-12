@@ -55,7 +55,7 @@ public class DiskManager {
 		PageId oPageId = new PageId();
 		
 		oPageId.setFileIdx(iFileIdx);
-		oPageId = ((file.length()) / (Constantes.PAGESIZE));
+		//oPageId = ((file.length()) / (Constantes.PAGESIZE));
 		oPageId.setPageIdx(oPageId);
 
 		return oPageId;
