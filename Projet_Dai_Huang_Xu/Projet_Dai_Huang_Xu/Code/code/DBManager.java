@@ -26,8 +26,9 @@ public class DBManager {
 	 * via ProcessCommand (et la boucle continue)
 	 * @param args
 	 * @throws IOException 
+	 * @throws ClassNotFoundException 
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		System.out.println("hello");
 
@@ -43,6 +44,9 @@ public class DBManager {
 		}
 		dm.writePage(0, "hello world ");
 		dm.readPage(0, null);
+		DBDef dbdef = DBDef.getINSTANCE();
+		dbdef.init();
+		dbdef.finish();
 
 		do {
 
